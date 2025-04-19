@@ -1,7 +1,8 @@
-# aletheia
-automatic cipher decoder
+#### might call it aletheia or nabu, still working on the name, but for the moment the name ~Deciding(caligo (shadow/fog :: latin)) is pretty unused on github as far as I can tell.
 
+an automatic cipher decoder
 
+part of an A-level project
 
 ## national-cipher-challenge-stats
 
@@ -18,3 +19,5 @@ automatic cipher decoder
 | Stream Cipher                        | 3         | Symbol-by-symbol stream; e.g. Solitaire Cipher         |
 | Fractionating Substitution           | 4         | Breaks letters into bits; e.g. Baconian, Bifid         |
 | Fractionating + Transposition        | 4         | Combines both; e.g. ADFGVX, Trifid                     |
+
+
