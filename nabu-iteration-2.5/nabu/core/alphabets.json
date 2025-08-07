@@ -1,0 +1,10 @@
+{
+  "latin": {
+    "lowercase": "abcdefghijklmnopqrstuvwxyz",
+    "uppercase": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  },
+  "greek": {
+    "lowercase": "αβγδεζηθικλμνξοπρστυφχψω",
+    "uppercase": "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"
+  }
+}
