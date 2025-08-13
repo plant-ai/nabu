@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Dict
 from nabu.ciphers.basecipher import Cipher, CaseMode
-from nabu.core.bijection import validateOneToOneKey, bijectionTable, invertBijectionTable
+from nabu.core.bijection import validateOneToOneBijection, bijectionTable, invertBijectionTable
 
 class MonoSubCipher(Cipher):
     def __init__(self, key: str, ring: str | None = None, *,
