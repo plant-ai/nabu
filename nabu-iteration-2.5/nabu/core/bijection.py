@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Dict
 
-def validateOneToOneKey(key: str, ring: str) -> None:
+def validateOneToOneBijection(key: str, ring: str) -> None:
     if len(key) != len(ring):
         raise ValueError(f"length mismatch: key={len(key)} ring={len(ring)}")
     if len(set(ring)) != len(ring):
@@ -10,7 +10,7 @@ def validateOneToOneKey(key: str, ring: str) -> None:
         raise ValueError("key must contain unique symbols")
 
 def bijectionTable(key: str, ring: str) -> Dict[int, int]:
-    validateOneToOneKey(key, ring) # maybe move?
+    validateOneToOneBijection(key, ring) # maybe move?
     return str.maketrans(ring, key)
 
 def invertBijectionTable(table: Dict[int, int]) -> Dict[int, int]:
