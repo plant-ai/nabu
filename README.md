@@ -7,7 +7,7 @@ A-Level Computer Science project and to act as a compact teaching/experiment pla
 
 > Package import path: `nabu` (module layout shown below).  
 > Supported Python: 3.10+ (uses modern type hints and `pow(a, -1, m)` for modular inverse).  
-> External dependencies: none.
+> External dependencies: none. (for core cipher functions)
 
 ---
 
