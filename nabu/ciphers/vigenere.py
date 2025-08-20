@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import List, Dict
 from nabu.ciphers.basecipher import Cipher, CaseMode
-from nabu.core.rotate import rotateTable
+from nabu.core.rotate import rotateTable # reuses same logic as a Caesar Cipher
 
 class VigenereCipher(Cipher):
     """
@@ -18,25 +18,25 @@ class VigenereCipher(Cipher):
         super().__init__(caseMode=caseMode, alphabet=alphabet)
 
         # ring and helpers
-        self.ring: str = ring if ring is not None else self.alphabet.lower
-        self._ringIndex: Dict[str, int] = {c: i for i, c in enumerate(self.ring)}
+        self.ring: str = ring if ring is not None else self.alphabet.lower # will amend this verbosity
+        self._ringIndex: Dict[str, int] = {c: i for i, c in enumerate(self.ring)} # precomputes for faster lookups
         self._ringSet = set(self.ring)
         self.key: str = "".join([c for c in key.lower()])
         self.keyLength: int = len(self.key)
 
         # goes and makes a caesar cipher style trans tbl for every letter in the key (fwd and inv)
-        rotations: List[int] = [self._ringIndex[c] for c in self.key]
-        self._tables: List[Dict[int, int]] = [rotateTable(self.ring, r) for r in rotations]
-        self._inverseTables: List[Dict[int, int]] = [rotateTable(self.ring, -r) for r in rotations]
+        rotations: List[int] = [self._ringIndex[c] for c in self.key] # finds every index of each letter of your key "HI" -> [7, 8] (0-indexed)
+        self._tables: List[Dict[int, int]] = [rotateTable(self.ring, r) for r in rotations] # creates a rotation table for those index tables rot 7 and rot 8
+        self._inverseTables: List[Dict[int, int]] = [rotateTable(self.ring, -r) for r in rotations] # creates rot (26 - 7) rot (26 - 8) tables to invert
 
-
+    # necessary for most polyalphabetic ciphers so will turn into primitive 
     def _apply(self, streamLower: str, tables: List[Dict[int, int]]) -> str:
         outChars: List[str] = []
         append = outChars.append
         ringSet = self._ringSet
         keyLength = self.keyLength
 
-        #works like an index register, tracks position in key, rather than a padding function
+        # works like an index register, tracks position in key, rather than a padding function
         k = 0
         for ch in streamLower:
             if ch in ringSet:
